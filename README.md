@@ -19,3 +19,5 @@ make install
 ```bash
 $ make up
 ```
+
+※ makeコマンドが使用できない環境の場合, `Makefile` を参照して該当のコマンドを実行して下さい.
