@@ -1,9 +1,10 @@
 FROM node:10-alpine
 
-RUN apk update && apk upgrade && npm i -g npm && npm i -g yarn && cd app && yarn install
+WORKDIR /app
+
+RUN apk update && apk upgrade && apk add git
+RUN npm i -g npm && npm i -g yarn
 
 ENV HOST 0.0.0.0
 
 EXPOSE 3000
-
-WORKDIR /app
