@@ -1,22 +1,29 @@
-# cyme-capsule-frontend
+# Cyme Capsule frontend
+Cyme Capsuleのフロントエンド用リポジトリ.
 
-> Cyme Capsule frontend project
+### Gitの運用方法について
 
-## Build Setup
+issue毎に `feature-XXXX` ブランチを切って `develop` ブランチにPRを送る.  
+PRはレビュー後 `develop` にマージされ, その後適切なタイミングで `master` にマージされる.
 
-``` bash
-# install dependencies
-$ yarn install
+### セットアップ
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+- 初回起動時
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+```bash
+$ make install
 ```
 
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+- ２回目以降起動時
+
+```bash
+$ make up
+```
+
+- 切断時
+
+```bash
+$ make down
+```
+
+※ makeコマンドが使用できない環境の場合, `Makefile` を参照して該当のコマンドを実行して下さい.

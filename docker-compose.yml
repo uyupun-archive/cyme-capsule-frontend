@@ -4,7 +4,6 @@ services:
   nuxt:
     container_name: cyme-capsule-frontend_nuxt
     build: ./docker/nuxt
-    command: yarn dev
     volumes:
       - .:/app
     ports:
