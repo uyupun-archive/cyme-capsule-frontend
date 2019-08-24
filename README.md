@@ -11,13 +11,19 @@ PRはレビュー後 `develop` にマージされ, その後適切なタイミ�
 - 初回時
 
 ```bash
-make install
+$ make install
 ```
 
 - ２回目以降
 
 ```bash
 $ make up
+```
+
+- 切断時
+
+```bash
+$ make down
 ```
 
 ※ makeコマンドが使用できない環境の場合, `Makefile` を参照して該当のコマンドを実行して下さい.

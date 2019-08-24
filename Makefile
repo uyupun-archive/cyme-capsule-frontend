@@ -9,3 +9,6 @@ up:
 	docker-compose up -d
 	open http://localhost:3000
 	docker-compose exec nuxt yarn dev
+
+down:
+	docker-compose down
