@@ -1,6 +1,6 @@
 FROM node:10-alpine
 
-RUN apk update && apk upgrade && npm i -g npm && npm i -g yarn && yarn install
+RUN apk update && apk upgrade && npm i -g npm && npm i -g yarn && cd app && yarn install
 
 ENV HOST 0.0.0.0
 
