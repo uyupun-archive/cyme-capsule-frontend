@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 export default {
   mode: 'spa',
   /*
@@ -43,13 +45,19 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/dotenv',
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: '',
+  },
+  env: {
+    API_URL: process.env.API_URL,
+  },
   /*
    ** Build configuration
    */

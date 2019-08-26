@@ -1,6 +1,7 @@
 install:
 	docker-compose build --no-cache
 	docker-compose up -d
+	docker-compose exec nuxt cp .env.example .env
 	docker-compose exec nuxt yarn install
 	open http://localhost:3000
 	docker-compose exec nuxt yarn dev
