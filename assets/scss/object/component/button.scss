@@ -1,0 +1,8 @@
+.btn-lightgreen {
+  color: white;
+  background-color: $bg-lightgreen;
+  border-color: $bg-lightgreen;
+  &:hover {
+    color: white;
+  }
+}
