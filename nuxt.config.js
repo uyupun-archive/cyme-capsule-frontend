@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 export default {
   mode: 'spa',
@@ -25,7 +25,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@/assets/scss/app.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -46,17 +46,17 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxtjs/dotenv',
+    '@nuxtjs/dotenv'
   ],
   /*
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: '',
+    baseURL: ''
   },
   env: {
-    API_URL: process.env.API_URL,
+    API_URL: process.env.API_URL
   },
   /*
    ** Build configuration
