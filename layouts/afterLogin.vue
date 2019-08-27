@@ -5,7 +5,7 @@
     </div>
     <footer class="border-top position-fixed fixed-bottom w-100 py-4">
       <div class="d-flex justify-content-around">
-        <router-link to="/dig">
+        <router-link to="/bury">
           <font-awesome-icon icon="utensil-spoon" class="c-footerIcon" />
         </router-link>
         <router-link to="/capsules">

@@ -4,5 +4,12 @@
   border-color: $bg-lightgreen;
   &:hover {
     color: white;
+    background-color: $bg-lightgreen;
+    border-color: $bg-lightgreen;
+  }
+  &:active {
+    color: white;
+    background-color: $bg-lightgreen;
+    border-color: $bg-lightgreen;
   }
 }
