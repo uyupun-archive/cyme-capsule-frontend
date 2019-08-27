@@ -1,5 +1,13 @@
 .c-footerIcon {
-  width: 30px;
-  height: 30px;
   color: $bg-lightgreen;
+  &.svg-inline--fa {
+    width: 30px;
+    height: 30px;
+    &.fa-w-16 {
+      width: 30px;
+    }
+    &.fa-w-18 {
+      width: 30px;
+    }
+  }
 }
