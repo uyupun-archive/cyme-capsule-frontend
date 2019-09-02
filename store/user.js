@@ -21,7 +21,7 @@ export default {
   actions: {
     async register({ commit }, { userId, password }) {
       const userInfo = await this.$axios
-        .post(`${process.env.API_URL}user/login`, {
+        .post(`/v1/user/login`, {
           user_id: userId,
           password
         })
