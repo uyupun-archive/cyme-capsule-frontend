@@ -2,18 +2,63 @@
   <div>
     <h2 class="c-title">ログイン</h2>
     <div class="mb-3">
-      <label>ユーザーID</label>
-      <input type="text" class="form-control" placeholder="ユーザーID" />
+      <label class="mb-0">ユーザーID</label>
+      <p>※ 13桁で入力して下さい。英字数字ハイフンのみ使用できます。</p>
+      <input
+        v-model="form.userId"
+        type="text"
+        class="form-control"
+        placeholder="ユーザーID"
+      />
     </div>
     <div class="mb-5">
       <label>パスワード</label>
-      <input type="password" class="form-control" placeholder="パスワード" />
+      <input
+        v-model="form.password"
+        type="password"
+        class="form-control"
+        placeholder="パスワード"
+      />
     </div>
     <div class="text-center mb-5">
-      <button type="button" class="btn btn-lightgreen px-5">ログイン</button>
+      <button type="button" class="btn btn-lightgreen px-5" @click="submit">
+        ログイン
+      </button>
+    </div>
+    <div class="mb-3">
+      <router-link to="/register">&lt; 新規登録画面へ</router-link>
     </div>
     <div>
       <router-link to="/">&lt; トップへ戻る</router-link>
     </div>
   </div>
 </template>
+
+<script>
+import { mapActions } from 'vuex'
+
+export default {
+  data() {
+    return {
+      form: {
+        userId: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    ...mapActions({ login: 'user/login' }),
+    async submit() {
+      try {
+        await this.login({
+          userId: this.form.userId,
+          password: this.form.password
+        })
+        this.$router.push('/capsules')
+      } catch (e) {
+        throw e
+      }
+    }
+  }
+}
+</script>
