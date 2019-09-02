@@ -13,3 +13,6 @@ up:
 
 down:
 	docker-compose down
+
+sh:
+	docker-compose exec nuxt sh
