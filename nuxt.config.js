@@ -45,6 +45,7 @@ export default {
     'bootstrap-vue/nuxt',
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/pwa',
     '@nuxtjs/dotenv',
     'nuxt-fontawesome'
@@ -54,7 +55,10 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: ''
+    //
+  },
+  proxy: {
+    '/api': 'http://localhost:8000'
   },
   env: {
     API_URL: process.env.API_URL
