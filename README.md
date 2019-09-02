@@ -27,4 +27,10 @@ $ make up
 $ make down
 ```
 
+- シェルの起動
+
+```bash
+$ make sh
+```
+
 ※ makeコマンドが使用できない環境の場合, `Makefile` を参照して該当のコマンドを実行して下さい.
