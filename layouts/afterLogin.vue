@@ -3,7 +3,7 @@
     <div class="c-container">
       <nuxt />
     </div>
-    <footer class="border-top position-fixed fixed-bottom w-100 py-4">
+    <footer class="border-top position-fixed fixed-bottom w-100 py-4 bg-white">
       <div class="d-flex justify-content-around">
         <router-link to="/bury">
           <font-awesome-icon icon="utensil-spoon" class="c-footerIcon" />
