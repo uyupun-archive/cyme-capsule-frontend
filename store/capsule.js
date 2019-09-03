@@ -35,20 +35,16 @@ export default {
         })
     },
     async search({ commit }, { latitude, longitude, accessToken }) {
-      const result = await this.$axios.get(
-        `capsule/search`,
-        {
-          params: {
-            latitude,
-            longitude
-          }
+      console.log(latitude, longitude, accessToken)
+      const result = await this.$axios.get(`capsule/search`, {
+        params: {
+          latitude,
+          longitude
         },
-        {
-          headers: {
-            Authorization: `Bearer: ${accessToken}`
-          }
+        headers: {
+          Authorization: `Bearer: ${accessToken}`
         }
-      )
+      })
       return result
     }
   }

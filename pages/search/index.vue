@@ -4,6 +4,27 @@
     <p class="mb-5">
       現在地から半径〇m以内にあるカプセルを探しますか？
     </p>
+    <div
+      v-if="type !== 0 && type !== 3 && type !== 4 && type !== 6"
+      class="text-center mb-3"
+    >
+      <button
+        type="button"
+        class="btn btn-lightgreen px-5"
+        @click="searchCapsule"
+      >
+        探す
+      </button>
+    </div>
+    <div v-if="type !== 1 && type !== 2 && type !== 5" class="text-center mb-3">
+      <button
+        type="button"
+        class="btn btn-lightgreen px-5"
+        @click="getGeolocation"
+      >
+        現在地を取得
+      </button>
+    </div>
     <div v-if="type === 1">
       <p>カプセルを検索中...</p>
     </div>
@@ -29,14 +50,11 @@
     <div v-else-if="type === 4">
       <p>現在地を取得できませんでした</p>
     </div>
-    <div class="text-center">
-      <button
-        type="button"
-        class="btn btn-lightgreen px-5"
-        @click="searchCapsule"
-      >
-        探す
-      </button>
+    <div v-else-if="type === 5">
+      <p>現在地を取得しました</p>
+    </div>
+    <div v-else-if="type === 6">
+      <p>現在地取得中...</p>
     </div>
   </div>
 </template>
@@ -61,7 +79,8 @@ export default {
   },
   methods: {
     ...mapActions({ search: 'capsule/search' }),
-    async geolocation() {
+    getGeolocation() {
+      this.type = 6
       if (!navigator.geolocation) {
         this.type = 4
       }
@@ -69,33 +88,24 @@ export default {
       const success = (position) => {
         this.location.latitude = position.coords.latitude
         this.location.longitude = position.coords.longitude
-        this.type = 2
+        this.type = 5
       }
 
       const error = () => {
         this.type = 4
       }
 
-      await navigator.geolocation.getCurrentPosition(success, error)
+      navigator.geolocation.getCurrentPosition(success, error)
     },
     async searchCapsule() {
       this.type = 1
       try {
-        await this.geolocation()
-      } catch (e) {
-        throw e
-      }
-      if (this.type === 4) {
-        this.type = 3
-        return
-      }
-      try {
-        console.log(this.location.latitude, this.location.longitude)
-        this.result = await this.search({
+        const result = await this.search({
           latitude: this.location.latitude,
           longitude: this.location.longitude,
           accessToken: this.accessToken
         })
+        this.result = result.data
         this.type = 2
       } catch (e) {
         throw e
