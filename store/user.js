@@ -21,7 +21,7 @@ export default {
   actions: {
     async register({ commit }, { userId, password }) {
       const userInfo = await this.$axios
-        .post(`/user/register`, {
+        .post(`v1/user/register`, {
           user_id: userId,
           password
         })
@@ -35,7 +35,7 @@ export default {
     },
     async login({ commit }, { userId, password }) {
       const userInfo = await this.$axios
-        .post(`/user/login`, {
+        .post(`v1/user/login`, {
           user_id: userId,
           password
         })
