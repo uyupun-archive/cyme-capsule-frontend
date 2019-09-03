@@ -45,7 +45,12 @@
       </p>
     </div>
     <div class="text-center">
-      <button type="button" class="btn btn-lightgreen px-5" @click="bury">
+      <button
+        type="button"
+        class="btn btn-lightgreen px-5"
+        :datafld="!locationExists"
+        @click="submit"
+      >
         埋める
       </button>
     </div>
@@ -60,6 +65,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import modal from '@/components/modal'
 
 export default {
@@ -84,10 +90,26 @@ export default {
       geolocationMsg: ''
     }
   },
+  computed: {
+    ...mapGetters({ accessToken: 'user/accessToken' })
+  },
   methods: {
-    bury() {
-      // TODO: api叩く
-      this.openModal = true
+    ...mapActions({ bury: 'capsule/bury' }),
+    async submit() {
+      console.log(this.form)
+      try {
+        await this.bury({
+          capsuleName: this.form.capsuleName,
+          burier: this.form.userName,
+          message: this.form.message,
+          latitude: this.form.location.latitude,
+          longitude: this.form.location.longitude,
+          accessToken: this.accessToken
+        })
+        this.openModal = true
+      } catch (e) {
+        throw e
+      }
     },
     geolocation() {
       this.geolocationMsg = '取得中です...'
