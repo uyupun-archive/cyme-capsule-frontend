@@ -14,7 +14,6 @@ export default {
       { commit },
       { capsuleName, burier, message, latitude, longitude, accessToken }
     ) {
-      console.log(capsuleName, accessToken)
       await this.$axios
         .post(
           `capsule/bury`,
@@ -34,6 +33,23 @@ export default {
         .catch((e) => {
           throw e
         })
+    },
+    async search({ commit }, { latitude, longitude, accessToken }) {
+      const result = await this.$axios.get(
+        `capsule/search`,
+        {
+          params: {
+            latitude,
+            longitude
+          }
+        },
+        {
+          headers: {
+            Authorization: `Bearer: ${accessToken}`
+          }
+        }
+      )
+      return result
     }
   }
 }

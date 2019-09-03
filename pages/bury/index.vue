@@ -96,7 +96,6 @@ export default {
   methods: {
     ...mapActions({ bury: 'capsule/bury' }),
     async submit() {
-      console.log(this.form)
       try {
         await this.bury({
           capsuleName: this.form.capsuleName,
