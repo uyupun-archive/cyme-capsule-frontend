@@ -4,7 +4,7 @@ export default ({ store }) => {
   window.onNuxtReady(() => {
     createPersistedState({
       key: 'CYME_CAPSULE_TOKEN',
-      paths: ['user.token']
+      paths: ['user.accessToken']
     })(store)
   })
 }

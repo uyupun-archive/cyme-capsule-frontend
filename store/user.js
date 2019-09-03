@@ -9,8 +9,8 @@ export default {
     }
   },
   getters: {
-    userId: (state) => {
-      return state.user.id
+    accessToken: (state) => {
+      return state.accessToken
     }
   },
   mutations: {
@@ -21,7 +21,7 @@ export default {
   actions: {
     async register({ commit }, { userId, password }) {
       const userInfo = await this.$axios
-        .post(`/v1/user/login`, {
+        .post(`/user/register`, {
           user_id: userId,
           password
         })
@@ -29,13 +29,13 @@ export default {
           throw e
         })
       if (userInfo) {
-        this.$axios.setToken(userInfo.token, 'Bearer')
-        commit('setToken', userInfo.token)
+        this.$axios.setToken(userInfo.data.access_token, 'Bearer')
+        commit('setToken', userInfo.data.access_token)
       }
     },
     async login({ commit }, { userId, password }) {
       const userInfo = await this.$axios
-        .post(`${process.env.API_URL}user/login`, {
+        .post(`/user/login`, {
           user_id: userId,
           password
         })
@@ -43,8 +43,8 @@ export default {
           throw e
         })
       if (userInfo) {
-        this.$axios.setToken(userInfo.token, 'Bearer')
-        commit('setToken', userInfo.token)
+        this.$axios.setToken(userInfo.data.access_token, 'Bearer')
+        commit('setToken', userInfo.data.access_token)
       }
     }
   }
