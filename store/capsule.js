@@ -35,7 +35,6 @@ export default {
         })
     },
     async search({ commit }, { latitude, longitude, accessToken }) {
-      console.log(latitude, longitude, accessToken)
       const result = await this.$axios.get(`v1/capsule/search`, {
         params: {
           latitude,
@@ -45,6 +44,20 @@ export default {
           Authorization: `Bearer: ${accessToken}`
         }
       })
+      return result
+    },
+    async dig({ commit }, { id, accessToken }) {
+      const result = await this.$axios.post(
+        `v1/capsule/dig`,
+        {
+          id
+        },
+        {
+          headers: {
+            Authorization: `Bearer: ${accessToken}`
+          }
+        }
+      )
       return result
     }
   }
