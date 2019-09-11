@@ -1,7 +1,9 @@
 <template>
   <div>
     <h1 class="c-titleTop">Cyme Capsule</h1>
-    <p class="mb-5">Cyme Capsuleとはタイムカプセルを…説明文が入ります。</p>
+    <p class="mb-5 text-center c-textItalic c-textBold">
+      ──過去ト未来ヲ繋グ匣。
+    </p>
     <div class="text-center mb-3">
       <router-link to="/register" class="btn btn-lightgreen px-5"
         >新規登録</router-link
