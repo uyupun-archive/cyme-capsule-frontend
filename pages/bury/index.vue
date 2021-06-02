@@ -1,63 +1,65 @@
 <template>
   <div>
     <h2 class="c-title">カプセルを埋める</h2>
-    <div class="mb-3">
-      <label>カプセル名</label>
-      <input
-        v-model="form.capsuleName"
-        type="text"
-        class="form-control"
-        placeholder="カプセル名"
-      />
-    </div>
-    <div class="mb-3">
-      <label>あなたの名前</label>
-      <input
-        v-model="form.userName"
-        type="text"
-        class="form-control"
-        placeholder="名前"
-      />
-    </div>
-    <div class="mb-3">
-      <label>メッセージ</label>
-      <textarea
-        v-model="form.message"
-        class="form-control"
-        placeholder="メッセージ"
-      ></textarea>
-    </div>
-    <div class="mb-5">
-      <button
-        type="button"
-        class="btn btn-lightgreen"
-        :disabled="disabledGeolocationBtn"
-        @click="geolocation"
-      >
-        現在地を取得する
-      </button>
-      <p v-if="disabledGeolocationBtn || geolocationMsg" class="mb-0">
-        {{ geolocationMsg }}
-      </p>
-      <p v-if="locationExists" class="mb-0">
-        緯度：{{ form.location.latitude }}<br />
-        経度：{{ form.location.longitude }}
-      </p>
-    </div>
-    <div class="text-center">
-      <button
-        type="button"
-        class="btn btn-lightgreen px-5"
-        :datafld="!locationExists"
-        @click="submit"
-      >
-        埋める
-      </button>
+    <div class="mb-10">
+      <div class="mb-3">
+        <label>カプセル名</label>
+        <input
+          v-model="form.capsuleName"
+          type="text"
+          class="form-control"
+          placeholder="カプセル名"
+        />
+      </div>
+      <div class="mb-3">
+        <label>あなたの名前</label>
+        <input
+          v-model="form.userName"
+          type="text"
+          class="form-control"
+          placeholder="名前"
+        />
+      </div>
+      <div class="mb-3">
+        <label>メッセージ</label>
+        <textarea
+          v-model="form.message"
+          class="form-control"
+          placeholder="メッセージ"
+        ></textarea>
+      </div>
+      <div class="mb-5">
+        <button
+          type="button"
+          class="btn btn-lightgreen"
+          :disabled="disabledGeolocationBtn"
+          @click="geolocation"
+        >
+          現在地を取得する
+        </button>
+        <p v-if="disabledGeolocationBtn || geolocationMsg" class="mb-0">
+          {{ geolocationMsg }}
+        </p>
+        <p v-if="locationExists" class="mb-0">
+          緯度：{{ form.location.latitude }}<br />
+          経度：{{ form.location.longitude }}
+        </p>
+      </div>
+      <div class="text-center">
+        <button
+          type="button"
+          class="btn btn-lightgreen px-5"
+          :datafld="!locationExists"
+          @click="submit"
+        >
+          埋める
+        </button>
+      </div>
     </div>
     <modal v-if="openModal" text="カプセルを埋めました" @close="close">
       <template #footer>
         <a class="btn btn-lightgreen" @click="close">
-          キャンセル
+          閉じる
         </a>
       </template>
     </modal>
@@ -148,3 +150,14 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+a:not([href]):not([tabindex]) {
+  color: white;
+  text-decoration: none;
+}
+
+.mb-10 {
+  margin-bottom: 100px;
+}
+</style>
